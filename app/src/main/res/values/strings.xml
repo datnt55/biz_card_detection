@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name" translatable="false">マイ名刺</string>
+    <string name="meishi_print_label" translatable="false">コンビこ名刺プリント</string>
+    <string name="meishi_label" translatable="false">マイ名刺</string>
+    <string name="again_print_btn" translatable="false">撮り直す</string>
+    <string name="set_btn" translatable="false">決定</string>
+    <string name="back_title" translatable="false">戻る</string>
+    <string name="eng_ok" translatable="false">OK</string>
+    <string name="alert_offline_title" translatable="false">オフライン表示</string>
+    <string name="alert_offline_msg" translatable="false">キャッシュを表示しているので、最新ではない可能があります</string>
+    <string name="cancel" translatable="false">キヤンセル</string>
+    <string name="save_alert_title" translatable="false">画像の保存</string>
+    <string name="save_alert_content" translatable="false">この画像を「マイ名刺」に送信します。\nよろしいでしょうか？</string>
+    <string name="close" translatable="false">閉じる</string>
+    <string name="infomation_label" translatable="false">このアプリについて</string>
+    <string name="support_site" translatable="false">サポートサイト</string>
+    <string name="privacy_policy" translatable="false">プライバシーポリシー</string>
+    <string name="company_label" translatable="false">\u00a9 SAMURAI SWORD inc. since 2019.</string>
+</resources>

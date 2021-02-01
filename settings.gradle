@@ -1,0 +1,2 @@
+include ':app', ':openCVLibrary343', ':liveedgedetection'
+rootProject.name='MyMeishi'
