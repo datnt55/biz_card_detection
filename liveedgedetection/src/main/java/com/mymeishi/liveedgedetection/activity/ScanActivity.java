@@ -2,6 +2,7 @@ package com.mymeishi.liveedgedetection.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -13,6 +14,7 @@ import android.os.Environment;
 import android.os.Handler;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.appcompat.app.AppCompatActivity;
@@ -175,7 +177,7 @@ public class ScanActivity extends AppCompatActivity implements IScanner, View.On
             copyBitmap = ScanUtils.resizeToScreenContentSize(copyBitmap, width, height);
             Mat originalMat = new Mat(copyBitmap.getHeight(), copyBitmap.getWidth(), CvType.CV_8UC1);
             Utils.bitmapToMat(copyBitmap, originalMat);
-            ArrayList<PointF> points = new ArrayList<>(4);
+            ArrayList<PointF> points;
             Map<Integer, PointF> pointFs = new HashMap<>();
             Point[] Qpoints;
             try {
@@ -189,7 +191,23 @@ public class ScanActivity extends AppCompatActivity implements IScanner, View.On
                     points.add(new PointF((float) Qpoints[3].x, (float) Qpoints[3].y));
                     points.add(new PointF((float) Qpoints[2].x, (float) Qpoints[2].y));
                 } else {
+                    new AlertDialog.Builder(this)
+                            .setTitle("Notice")
+                            .setMessage("We don't recognize any card. Please try again")
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    mImageSurfaceView.setPreviewCallback();
+                                    dialog.dismiss();
+                                }
+                            })
+
+                            // A null listener allows the button to dismiss the dialog and take no further action.
+                            .setNegativeButton(android.R.string.no, null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
                     points = ScanUtils.getPolygonDefaultPoints(copyBitmap);
+
+                    return;
                 }
 //                else {
 //                    quad = ScanUtils.detectHoughQuadrilateral(originalMat, true);

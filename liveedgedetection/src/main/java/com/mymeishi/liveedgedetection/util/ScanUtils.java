@@ -421,7 +421,7 @@ public class ScanUtils {
      *  6. Choose the best square.
      */
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    //@RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public static Point[] detectLargestQuadrilateral(Mat originMat, boolean flag) {
         Mat originalMat = originMat.clone();
         Imgproc.resize(originalMat, originalMat, new Size(), 0.5, 0.5);
@@ -433,7 +433,7 @@ public class ScanUtils {
 
 //        int canny_thresh_l = ScanConstants.CANNY_THRESH_L1;
 //        int canny_thresh_u = ScanConstants.CANNY_THRESH_U1;
-        int canny_thresh_u = 60;
+        int canny_thresh_u = 70;
         int canny_thresh_l = canny_thresh_u*2;
 
         if (flag) {
