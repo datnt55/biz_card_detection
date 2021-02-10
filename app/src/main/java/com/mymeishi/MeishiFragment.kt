@@ -17,6 +17,7 @@ import androidx.fragment.app.DialogFragment
 import com.mymeishi.ext.AlertUtil
 import com.mymeishi.liveedgedetection.activity.ScanActivity
 import com.mymeishi.liveedgedetection.constants.ScanConstants
+import com.mymeishi.liveedgedetection.util.ImageCompressHelper
 import com.mymeishi.liveedgedetection.util.ScanUtils
 import java.io.*
 
@@ -70,7 +71,9 @@ class MeishiFragment : DialogFragment(), View.OnClickListener {
                 if (null != data && null != data.extras) {
                     val filePath =
                         data.extras!!.getString(ScanConstants.SCANNED_RESULT)
-                    baseBitmap = ScanUtils.decodeBitmapFromFile(filePath, ScanConstants.IMAGE_NAME)
+                    filePath?.let {
+                        baseBitmap = ImageCompressHelper().compressImage(filePath)
+                    }
                     if (baseBitmap!!.width < baseBitmap!!.height) {
                         val matrix = Matrix()
                         matrix.postRotate(270f)

@@ -45,7 +45,8 @@ import kotlin.collections.ArrayList
  * This class previews the live images from the camera
  */
 @Suppress("DEPRECATION")
-class ScanSurfaceView(context: Context?, iScanner: IScanner) : FrameLayout(context!!), SurfaceHolder.Callback {
+class
+ScanSurfaceView(context: Context?, iScanner: IScanner) : FrameLayout(context!!), SurfaceHolder.Callback {
 
     companion object {
         private val TAG: String = "ScanSurfaceView"
