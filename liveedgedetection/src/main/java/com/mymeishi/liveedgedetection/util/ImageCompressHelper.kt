@@ -3,6 +3,8 @@ package com.mymeishi.liveedgedetection.util
 import android.graphics.*
 import android.media.ExifInterface
 import android.util.Log
+import com.mymeishi.liveedgedetection.constants.ScanConstants
+import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
@@ -18,7 +20,7 @@ class ImageCompressHelper {
 //      by setting this field as true, the actual bitmap pixels are not loaded in the memory. Just the bounds are loaded. If
 //      you try the use the bitmap here, you will get null.
         options.inJustDecodeBounds = true
-        var bmp = BitmapFactory.decodeFile(filePath, options)
+        var bmp = BitmapFactory.decodeFile(File(filePath, ScanConstants.IMAGE_NAME).absolutePath, options)
         var actualHeight = options.outHeight
         var actualWidth = options.outWidth
 
@@ -56,7 +58,7 @@ class ImageCompressHelper {
         options.inTempStorage = ByteArray(16 * 1024)
         try {
 //          load the bitmap from its path
-            bmp = BitmapFactory.decodeFile(filePath, options)
+            bmp = BitmapFactory.decodeFile(File(filePath, ScanConstants.IMAGE_NAME).absolutePath, options)
         } catch (exception: OutOfMemoryError) {
             exception.printStackTrace()
         }

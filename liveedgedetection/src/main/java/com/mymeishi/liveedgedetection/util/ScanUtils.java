@@ -836,6 +836,8 @@ public class ScanUtils {
             resultHeight = bottomHeight;
 
         if (!transform){
+            if (topLeft.y + resultHeight > image.getHeight())
+                return Bitmap.createBitmap(image,(int)topLeft.x, (int)topLeft.y, resultWidth, image.getHeight() - (int)topLeft.y);
             return Bitmap.createBitmap(image,(int)topLeft.x, (int)topLeft.y, resultWidth, resultHeight);
         }
 
